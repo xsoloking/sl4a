@@ -46,7 +46,7 @@ public class MediaScannerFacade extends RpcReceiver {
     public MediaScannerFacade(FacadeManager manager) {
         super(manager);
         mService = manager.getService();
-        mScanService = new MediaScanner(mService, "external");
+        mScanService = new MediaScanner(mService);
         mEventFacade = manager.getReceiver(EventFacade.class);
         mReceiver = new MediaScannerReceiver();
     }
