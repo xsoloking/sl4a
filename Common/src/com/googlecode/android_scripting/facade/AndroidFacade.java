@@ -36,6 +36,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StatFs;
+import android.os.UserHandle;
 import android.os.Vibrator;
 import android.content.ClipboardManager;
 import android.text.InputType;
@@ -748,6 +749,15 @@ public class AndroidFacade extends RpcReceiver {
       Intent intent
       ) throws Exception {
     mService.startService(intent);
+  }
+
+  @Rpc(description = "Send Broadcast Intent as system user.")
+  public void sendBroadcastIntentAsUserAll(
+      @RpcParameter(name = "intent",
+                    description = "Intent in the format as returned from makeIntent")
+      Intent intent
+      ) throws Exception {
+    mService.sendBroadcastAsUser(intent, UserHandle.ALL);
   }
 
   @Rpc(description = "Vibrates the phone or a specified duration in milliseconds.")
