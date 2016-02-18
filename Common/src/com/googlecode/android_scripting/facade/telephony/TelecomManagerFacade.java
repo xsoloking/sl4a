@@ -74,23 +74,8 @@ public class TelecomManagerFacade extends RpcReceiver {
     }
 
     @Rpc(description = "If there's a ringing call, accept on behalf of the user.")
-    public void telecomAcceptRingingCall(
-            @RpcOptional
-            String videoState) {
-
-        if (videoState == null) {
-            mTelecomManager.acceptRingingCall();
-        }
-        else {
-            int state = InCallServiceImpl.getVideoCallState(videoState);
-
-            if (state == InCallServiceImpl.STATE_INVALID) {
-                Log.e("telecomAcceptRingingCall: video state is invalid!");
-                return;
-            }
-
-            mTelecomManager.acceptRingingCall(state);
-        }
+    public void telecomAcceptRingingCall() {
+        mTelecomManager.acceptRingingCall();
     }
 
     @Rpc(description = "Removes the missed-call notification if one is present.")
@@ -221,7 +206,7 @@ public class TelecomManagerFacade extends RpcReceiver {
             @RpcOptional
             Boolean enabled) {
         toggleCallWaitingForSubscription(
-                SubscriptionManager.getDefaultVoiceSubscriptionId(), enabled);
+                SubscriptionManager.getDefaultVoiceSubId(), enabled);
     }
 
     @Rpc(description = "Toggles call waiting feature on or off for specified subscription id.")

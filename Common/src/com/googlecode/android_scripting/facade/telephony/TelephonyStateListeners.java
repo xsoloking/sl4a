@@ -50,7 +50,7 @@ public class TelephonyStateListeners {
         public CallStateChangeListener(EventFacade ef) {
             super();
             mEventFacade = ef;
-            subscriptionId = SubscriptionManager.getDefaultVoiceSubscriptionId();
+            subscriptionId = SubscriptionManager.getDefaultVoiceSubId();
         }
 
         public CallStateChangeListener(EventFacade ef, int subId) {
@@ -109,7 +109,7 @@ public class TelephonyStateListeners {
         public DataConnectionRealTimeInfoChangeListener(EventFacade ef) {
             super();
             mEventFacade = ef;
-            subscriptionId = SubscriptionManager.getDefaultDataSubscriptionId();
+            subscriptionId = SubscriptionManager.getDefaultDataSubId();
         }
 
         public DataConnectionRealTimeInfoChangeListener(EventFacade ef, int subId) {
@@ -140,7 +140,7 @@ public class TelephonyStateListeners {
             super();
             mEventFacade = ef;
             mTelephonyManager = tm;
-            subscriptionId = SubscriptionManager.getDefaultDataSubscriptionId();
+            subscriptionId = SubscriptionManager.getDefaultDataSubId();
         }
 
         public DataConnectionStateChangeListener(EventFacade ef, TelephonyManager tm, int subId) {
@@ -170,7 +170,7 @@ public class TelephonyStateListeners {
         public ServiceStateChangeListener(EventFacade ef) {
             super();
             mEventFacade = ef;
-            subscriptionId = SubscriptionManager.getDefaultDataSubscriptionId();
+            subscriptionId = SubscriptionManager.getDefaultDataSubId();
         }
 
         public ServiceStateChangeListener(EventFacade ef, int subId) {
