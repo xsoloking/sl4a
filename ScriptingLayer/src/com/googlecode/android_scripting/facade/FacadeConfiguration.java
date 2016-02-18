@@ -55,7 +55,6 @@ import com.googlecode.android_scripting.facade.telephony.TelephonyManagerFacade;
 import com.googlecode.android_scripting.facade.ui.UiFacade;
 import com.googlecode.android_scripting.facade.wifi.HttpFacade;
 import com.googlecode.android_scripting.facade.wifi.WifiManagerFacade;
-import com.googlecode.android_scripting.facade.wifi.WifiNanManagerFacade;
 import com.googlecode.android_scripting.facade.wifi.WifiP2pManagerFacade;
 import com.googlecode.android_scripting.facade.wifi.WifiRttManagerFacade;
 import com.googlecode.android_scripting.facade.wifi.WifiScannerFacade;
@@ -134,7 +133,6 @@ public class FacadeConfiguration {
         /*Compatibility reset to >= Marshmallow */
         if( sSdkLevel >= 23 ) {
             //add new facades here
-            sFacadeClassList.add(WifiNanManagerFacade.class);
         }
 
         for (Class<? extends RpcReceiver> recieverClass : sFacadeClassList) {

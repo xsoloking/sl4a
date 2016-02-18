@@ -46,12 +46,12 @@ public class SubscriptionManagerFacade extends RpcReceiver {
 
     @Rpc(description = "Return the default subscription ID")
     public Integer subscriptionGetDefaultSubId() {
-        return SubscriptionManager.getDefaultSubscriptionId();
+        return SubscriptionManager.getDefaultSubId();
     }
 
     @Rpc(description = "Return the default data subscription ID")
     public Integer subscriptionGetDefaultDataSubId() {
-        return SubscriptionManager.getDefaultDataSubscriptionId();
+        return SubscriptionManager.getDefaultDataSubId();
     }
 
     @Rpc(description = "Set the default data subscription ID")
@@ -63,7 +63,7 @@ public class SubscriptionManagerFacade extends RpcReceiver {
 
     @Rpc(description = "Return the default voice subscription ID")
     public Integer subscriptionGetDefaultVoiceSubId() {
-        return SubscriptionManager.getDefaultVoiceSubscriptionId();
+        return SubscriptionManager.getDefaultVoiceSubId();
     }
 
     @Rpc(description = "Set the default voice subscription ID")
@@ -75,7 +75,7 @@ public class SubscriptionManagerFacade extends RpcReceiver {
 
     @Rpc(description = "Return the default sms subscription ID")
     public Integer subscriptionGetDefaultSmsSubId() {
-        return SubscriptionManager.getDefaultSmsSubscriptionId();
+        return SubscriptionManager.getDefaultSmsSubId();
     }
 
     @Rpc(description = "Set the default sms subscription ID")
