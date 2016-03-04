@@ -635,7 +635,7 @@ public class InCallServiceImpl extends InCallService {
 
     public static String getCallId(Call call) {
         if (call != null) {
-            return call.toString();
+            return "Call:" + call.hashCode();
         }
         else
             return "";
@@ -643,7 +643,7 @@ public class InCallServiceImpl extends InCallService {
 
     public static String getVideoCallId(InCallServiceImpl.VideoCall videoCall) {
         if (videoCall != null)
-            return videoCall.toString();
+            return "VideoCall:" + videoCall.hashCode();
         else
             return "";
     }
