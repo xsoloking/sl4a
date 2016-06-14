@@ -1,39 +1,6 @@
 
 package com.googlecode.android_scripting.facade.wifi;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.net.ConnectException;
-import java.security.GeneralSecurityException;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.googlecode.android_scripting.Log;
-import com.googlecode.android_scripting.facade.EventFacade;
-import com.googlecode.android_scripting.facade.FacadeManager;
-import com.googlecode.android_scripting.jsonrpc.RpcReceiver;
-import com.googlecode.android_scripting.rpc.Rpc;
-import com.googlecode.android_scripting.rpc.RpcOptional;
-import com.googlecode.android_scripting.rpc.RpcParameter;
-
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -59,6 +26,40 @@ import android.os.Bundle;
 import android.provider.Settings.Global;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Base64;
+
+import com.googlecode.android_scripting.Log;
+import com.googlecode.android_scripting.facade.EventFacade;
+import com.googlecode.android_scripting.facade.FacadeManager;
+import com.googlecode.android_scripting.jsonrpc.RpcReceiver;
+import com.googlecode.android_scripting.rpc.Rpc;
+import com.googlecode.android_scripting.rpc.RpcOptional;
+import com.googlecode.android_scripting.rpc.RpcParameter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.net.ConnectException;
+import java.security.GeneralSecurityException;
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * WifiManager functions.
@@ -531,8 +532,8 @@ public class WifiManagerFacade extends RpcReceiver {
     }
 
     @Rpc(description = "Enable/disable autojoin scan and switch network when connected.")
-    public Boolean wifiEnableAutoJoinWhenAssociated(@RpcParameter(name = "enable") Boolean enable) {
-        return mWifi.enableAutoJoinWhenAssociated(enable);
+    public Boolean wifiSetEnableAutoJoinWhenAssociated(@RpcParameter(name = "enable") Boolean enable) {
+        return mWifi.setEnableAutoJoinWhenAssociated(enable);
     }
 
     @Rpc(description = "Enable a configured network. Initiate a connection if disableOthers is true", returns = "True if the operation succeeded.")
@@ -621,11 +622,6 @@ public class WifiManagerFacade extends RpcReceiver {
     @Rpc(description = "Get setting for Framework layer autojoin enable status.")
     public Boolean wifiGetEnableAutoJoinWhenAssociated() {
         return mWifi.getEnableAutoJoinWhenAssociated();
-    }
-
-    @Rpc(description = "Returns 1 if autojoin offload thru Wifi HAL layer is enabled, 0 otherwise.")
-    public Integer wifiGetHalBasedAutojoinOffload() {
-        return mWifi.getHalBasedAutojoinOffload();
     }
 
     @Rpc(description = "Get privileged configured networks.")
@@ -800,12 +796,6 @@ public class WifiManagerFacade extends RpcReceiver {
         mWifi.setCountryCode(country, persist);
     }
 
-    @Rpc(description = "Enable/disable autojoin offload through Wifi HAL layer.")
-    public void wifiSetHalBasedAutojoinOffload(
-            @RpcParameter(name = "enable") Integer enable) {
-        mWifi.setHalBasedAutojoinOffload(enable);
-    }
-
     @Rpc(description = "Enable/disable tdls with a mac address.")
     public void wifiSetTdlsEnabledWithMacAddress(
             @RpcParameter(name = "remoteMacAddress") String remoteMacAddress,
@@ -871,6 +861,12 @@ public class WifiManagerFacade extends RpcReceiver {
             return true;
         }
         return false;
+    }
+
+    @Rpc(description = "Enable/disable WifiConnectivityManager.")
+    public void wifiEnableWifiConnectivityManager(
+            @RpcParameter(name = "enable") Boolean enable) {
+        mWifi.enableWifiConnectivityManager(enable);
     }
 
     @Override

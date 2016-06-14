@@ -134,7 +134,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     public boolean telephonySetPreferredNetworkTypes(
         @RpcParameter(name = "nwPreference") String nwPreference) {
         return telephonySetPreferredNetworkTypesForSubscription(nwPreference,
-                SubscriptionManager.getDefaultSubId());
+                SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Set network preference for subscription.")
@@ -154,7 +154,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     @Rpc(description = "Get network preference.")
     public String telephonyGetPreferredNetworkTypes() {
         return telephonyGetPreferredNetworkTypesForSubscription(
-                SubscriptionManager.getDefaultSubId());
+                SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Get network preference for subscription.")
@@ -167,7 +167,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     @Rpc(description = "Get current voice network type")
     public String telephonyGetCurrentVoiceNetworkType() {
         return telephonyGetCurrentVoiceNetworkTypeForSubscription(
-                SubscriptionManager.getDefaultSubId());
+                SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Get current voice network type for subscription")
@@ -180,7 +180,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     @Rpc(description = "Get current data network type")
     public String telephonyGetCurrentDataNetworkType() {
         return telephonyGetCurrentDataNetworkTypeForSubscription(
-                SubscriptionManager.getDefaultSubId());
+                SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Get current data network type for subscription")
@@ -199,7 +199,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "default subscription ID .Return value is integer.")
     public int telephonyGetPreferredNetworkTypeInteger() {
         return telephonyGetPreferredNetworkTypeIntegerForSubscription(
-                                         SubscriptionManager.getDefaultSubId());
+                                         SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Get preferred network setting for " +
@@ -213,7 +213,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStartTrackingCallState() {
         return telephonyStartTrackingCallStateForSubscription(
-                              SubscriptionManager.getDefaultVoiceSubId());
+                              SubscriptionManager.getDefaultVoiceSubscriptionId());
     }
 
     @Rpc(description = "Starts tracking call state change" +
@@ -235,7 +235,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStartTrackingCellInfoChange() {
         return telephonyStartTrackingCellInfoChangeForSubscription(
-                              SubscriptionManager.getDefaultVoiceSubId());
+                              SubscriptionManager.getDefaultVoiceSubscriptionId());
     }
 
     @Rpc(description = "Starts tracking cell info change" +
@@ -258,7 +258,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     public Boolean telephonyAdjustPreciseCallStateListenLevel(String type,
                                                           Boolean listen) {
         return telephonyAdjustPreciseCallStateListenLevelForSubscription(type, listen,
-                                 SubscriptionManager.getDefaultVoiceSubId());
+                                 SubscriptionManager.getDefaultVoiceSubscriptionId());
     }
 
     @Rpc(description = "Turn on/off precise listening on fore/background or" +
@@ -289,7 +289,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
             "for default voice subscription ID.")
     public Boolean telephonyStopTrackingCellInfoChange() {
         return telephonyStopTrackingCellInfoChangeForSubscription(
-                SubscriptionManager.getDefaultVoiceSubId());
+                SubscriptionManager.getDefaultVoiceSubscriptionId());
     }
 
     @Rpc(description = "Stops tracking cell info change " +
@@ -310,7 +310,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
             "for default voice subscription ID.")
     public Boolean telephonyStopTrackingCallStateChange() {
         return telephonyStopTrackingCallStateChangeForSubscription(
-                SubscriptionManager.getDefaultVoiceSubId());
+                SubscriptionManager.getDefaultVoiceSubscriptionId());
     }
 
     @Rpc(description = "Stops tracking call state change " +
@@ -332,7 +332,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStartTrackingDataConnectionRTInfoChange() {
         return telephonyStartTrackingDataConnectionRTInfoChangeForSubscription(
-                                 SubscriptionManager.getDefaultDataSubId());
+                                 SubscriptionManager.getDefaultDataSubscriptionId());
     }
 
     @Rpc(description = "Starts tracking data connection real time info change" +
@@ -354,7 +354,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStopTrackingDataConnectionRTInfoChange() {
         return telephonyStopTrackingDataConnectionRTInfoChangeForSubscription(
-                                 SubscriptionManager.getDefaultDataSubId());
+                                 SubscriptionManager.getDefaultDataSubscriptionId());
     }
 
     @Rpc(description = "Stops tracking data connection real time info change" +
@@ -376,7 +376,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID..")
     public Boolean telephonyStartTrackingDataConnectionStateChange() {
         return telephonyStartTrackingDataConnectionStateChangeForSubscription(
-                                 SubscriptionManager.getDefaultDataSubId());
+                                 SubscriptionManager.getDefaultDataSubscriptionId());
     }
 
     @Rpc(description = "Starts tracking data connection state change" +
@@ -398,7 +398,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID..")
     public Boolean telephonyStopTrackingDataConnectionStateChange() {
         return telephonyStopTrackingDataConnectionStateChangeForSubscription(
-                                 SubscriptionManager.getDefaultDataSubId());
+                                 SubscriptionManager.getDefaultDataSubscriptionId());
     }
 
     @Rpc(description = "Stops tracking data connection state change " +
@@ -420,7 +420,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStartTrackingServiceStateChange() {
         return telephonyStartTrackingServiceStateChangeForSubscription(
-                                 SubscriptionManager.getDefaultSubId());
+                                 SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Starts tracking service state change " +
@@ -442,7 +442,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStopTrackingServiceStateChange() {
         return telephonyStopTrackingServiceStateChangeForSubscription(
-                                 SubscriptionManager.getDefaultSubId());
+                                 SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Stops tracking service state change " +
@@ -464,7 +464,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStartTrackingSignalStrengthChange() {
         return telephonyStartTrackingSignalStrengthChangeForSubscription(
-                                 SubscriptionManager.getDefaultSubId());
+                                 SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Starts tracking signal strength change " +
@@ -486,7 +486,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStopTrackingSignalStrengthChange() {
         return telephonyStopTrackingSignalStrengthChangeForSubscription(
-                                 SubscriptionManager.getDefaultSubId());
+                                 SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Stops tracking signal strength change " +
@@ -508,7 +508,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStartTrackingVoiceMailStateChange() {
         return telephonyStartTrackingVoiceMailStateChangeForSubscription(
-                                 SubscriptionManager.getDefaultSubId());
+                                 SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Starts tracking voice mail state change " +
@@ -530,7 +530,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID.")
     public Boolean telephonyStopTrackingVoiceMailStateChange() {
         return telephonyStopTrackingVoiceMailStateChangeForSubscription(
-                                 SubscriptionManager.getDefaultSubId());
+                                 SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Stops tracking voice mail state change " +
@@ -563,21 +563,21 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID")
     public String telephonyGetNetworkOperator() {
         return telephonyGetNetworkOperatorForSubscription(
-                        SubscriptionManager.getDefaultSubId());
+                        SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the numeric name (MCC+MNC) of registered operator" +
                        "for specified subscription ID.")
     public String telephonyGetNetworkOperatorForSubscription(
                   @RpcParameter(name = "subId") Integer subId) {
-        return mTelephonyManager.getNetworkOperatorName(subId);
+        return mTelephonyManager.getNetworkOperator(subId);
     }
 
     @Rpc(description = "Returns the alphabetic name of current registered operator" +
                        "for specified subscription ID.")
     public String telephonyGetNetworkOperatorName() {
         return telephonyGetNetworkOperatorNameForSubscription(
-                        SubscriptionManager.getDefaultSubId());
+                        SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the alphabetic name of registered operator " +
@@ -596,7 +596,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                 " or getDataNetworkTpe()");
 
         return telephonyGetNetworkTypeForSubscription(
-                       SubscriptionManager.getDefaultSubId());
+                       SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the current RAT in use on the device" +
@@ -616,7 +616,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
             " the default voice subscription.")
     public String telephonyGetVoiceNetworkType() {
         return telephonyGetVoiceNetworkTypeForSubscription(
-                         SubscriptionManager.getDefaultVoiceSubId());
+                         SubscriptionManager.getDefaultVoiceSubscriptionId());
     }
 
     @Rpc(description = "Returns the current voice RAT for" +
@@ -631,7 +631,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
             " the defaut data subscription")
     public String telephonyGetDataNetworkType() {
         return telephonyGetDataNetworkTypeForSubscription(
-                         SubscriptionManager.getDefaultDataSubId());
+                         SubscriptionManager.getDefaultDataSubscriptionId());
     }
 
     @Rpc(description = "Returns the current data RAT for" +
@@ -651,13 +651,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     @Rpc(description = "Returns the MCC for default subscription ID")
     public String telephonyGetSimCountryIso() {
          return telephonyGetSimCountryIsoForSubscription(
-                      SubscriptionManager.getDefaultSubId());
-    }
-
-    @Rpc(description = "Get the latest power consumption stats from the modem")
-    public ModemActivityInfo telephonyGetModemActivityInfo() {
-        ModemActivityInfo info = mTelephonyManager.getModemActivityInfo();
-        return info;
+                      SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the MCC for specified subscription ID")
@@ -669,7 +663,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     @Rpc(description = "Returns the MCC+MNC for default subscription ID")
     public String telephonyGetSimOperator() {
         return telephonyGetSimOperatorForSubscription(
-                  SubscriptionManager.getDefaultSubId());
+                  SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the MCC+MNC for specified subscription ID")
@@ -682,21 +676,21 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID")
     public String telephonyGetSimOperatorName() {
         return telephonyGetSimOperatorNameForSubscription(
-                  SubscriptionManager.getDefaultSubId());
+                  SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the Service Provider Name (SPN)" +
                        " for specified subscription ID.")
     public String telephonyGetSimOperatorNameForSubscription(
                   @RpcParameter(name = "subId") Integer subId) {
-        return mTelephonyManager.getSimOperator(subId);
+        return mTelephonyManager.getSimOperatorName(subId);
     }
 
     @Rpc(description = "Returns the serial number of the SIM for " +
                        "default subscription ID, or Null if unavailable")
     public String telephonyGetSimSerialNumber() {
         return telephonyGetSimSerialNumberForSubscription(
-                  SubscriptionManager.getDefaultSubId());
+                  SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the serial number of the SIM for " +
@@ -722,10 +716,11 @@ public class TelephonyManagerFacade extends RpcReceiver {
     @Rpc(description = "Get Authentication Challenge Response from a " +
             "given SIM Application")
     public String telephonyGetIccSimChallengeResponse(
-        @RpcParameter(name = "appType") Integer appType,
+            @RpcParameter(name = "appType") Integer appType,
+            @RpcParameter(name = "authType") Integer authType,
             @RpcParameter(name = "hexChallenge") String hexChallenge) {
         return telephonyGetIccSimChallengeResponseForSubscription(
-                SubscriptionManager.getDefaultSubId(), appType, hexChallenge);
+                SubscriptionManager.getDefaultSubscriptionId(), appType, authType, hexChallenge);
     }
 
     @Rpc(description = "Get Authentication Challenge Response from a " +
@@ -733,11 +728,12 @@ public class TelephonyManagerFacade extends RpcReceiver {
     public String telephonyGetIccSimChallengeResponseForSubscription(
             @RpcParameter(name = "subId") Integer subId,
             @RpcParameter(name = "appType") Integer appType,
+            @RpcParameter(name = "authType") Integer authType,
             @RpcParameter(name = "hexChallenge") String hexChallenge) {
 
         try {
             String b64Data = BaseEncoding.base64().encode(BaseEncoding.base16().decode(hexChallenge));
-            String b64Result = mTelephonyManager.getIccSimChallengeResponse(subId, appType, b64Data);
+            String b64Result = mTelephonyManager.getIccAuthentication(subId, appType, authType, b64Data);
             return (b64Result != null)
                     ? BaseEncoding.base16().encode(BaseEncoding.base64().decode(b64Result)) : null;
         } catch(Exception e) {
@@ -750,7 +746,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
             "for default subscription ID, or null if unavailable")
     public String telephonyGetSubscriberId() {
         return telephonyGetSubscriberIdForSubscription(
-                SubscriptionManager.getDefaultSubId());
+                SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the unique subscriber ID (such as IMSI) " +
@@ -764,7 +760,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        " voice mail number for default subscription ID.")
     public String telephonyGetVoiceMailAlphaTag() {
         return telephonyGetVoiceMailAlphaTagForSubscription(
-                   SubscriptionManager.getDefaultSubId());
+                   SubscriptionManager.getDefaultSubscriptionId());
     }
 
 
@@ -779,7 +775,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID; null if unavailable.")
     public String telephonyGetVoiceMailNumber() {
         return telephonyGetVoiceMailNumberForSubscription(
-                   SubscriptionManager.getDefaultSubId());
+                   SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the voice mail number " +
@@ -804,7 +800,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for default subscription ID")
     public Boolean telephonyCheckNetworkRoaming() {
         return telephonyCheckNetworkRoamingForSubscription(
-                             SubscriptionManager.getDefaultSubId());
+                             SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns true if the device is in roaming state " +
@@ -844,7 +840,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "for specified subscription ID; null if unavailable")
     public String telephonyGetLine1NumberForSubscription(
                   @RpcParameter(name = "subId") Integer subId) {
-        return mTelephonyManager.getLine1NumberForSubscriber(subId);
+        return mTelephonyManager.getLine1Number(subId);
     }
 
     @Rpc(description = "Returns the Alpha Tag for the default subscription " +
@@ -857,7 +853,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "ID; null if unavailable")
     public String telephonyGetLine1AlphaTagForSubscription(
                   @RpcParameter(name = "subId") Integer subId) {
-        return mTelephonyManager.getLine1AlphaTagForSubscriber(subId);
+        return mTelephonyManager.getLine1AlphaTag(subId);
     }
 
     @Rpc(description = "Set the Line1-number (phone number) and Alpha Tag" +
@@ -876,7 +872,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                 @RpcParameter(name = "number") String number,
                 @RpcOptional
                 @RpcParameter(name = "alphaTag") String alphaTag) {
-        return mTelephonyManager.setLine1NumberForDisplayForSubscriber(subId, alphaTag, number);
+        return mTelephonyManager.setLine1NumberForDisplay(subId, alphaTag, number);
     }
 
     @Rpc(description = "Returns the neighboring cell information of the device.")
@@ -902,7 +898,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                        "default data subscription ID.")
     public Boolean telephonyIsDataEnabled() {
         return telephonyIsDataEnabledForSubscription(
-                   SubscriptionManager.getDefaultDataSubId());
+                   SubscriptionManager.getDefaultDataSubscriptionId());
     }
 
     @Rpc(description = "Returns True if data connection is enabled.")
@@ -917,7 +913,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
                 @RpcParameter(name = "enabled")
                 @RpcOptional Boolean enabled) {
         telephonyToggleDataConnectionForSubscription(
-                         SubscriptionManager.getDefaultDataSubId(), enabled);
+                         SubscriptionManager.getDefaultDataSubscriptionId(), enabled);
     }
 
     @Rpc(description = "Toggles data connection on/off for" +
@@ -1088,7 +1084,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     public String telephonyGetServiceState() {
         //TODO: b/26273807 need to have framework API to get service state.
         return telephonyGetServiceStateForSubscription(
-                                 SubscriptionManager.getDefaultSubId());
+                                 SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the service state for specified subscription ID")
@@ -1101,7 +1097,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     @Rpc(description = "Returns the call state for default subscription ID")
     public String telephonyGetCallState() {
         return telephonyGetCallStateForSubscription(
-                               SubscriptionManager.getDefaultSubId());
+                               SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns the call state for specified subscription ID")
@@ -1114,7 +1110,7 @@ public class TelephonyManagerFacade extends RpcReceiver {
     @Rpc(description = "Returns current signal strength for default subscription ID.")
     public SignalStrength telephonyGetSignalStrength() {
         return telephonyGetSignalStrengthForSubscription(
-                               SubscriptionManager.getDefaultSubId());
+                               SubscriptionManager.getDefaultSubscriptionId());
     }
 
     @Rpc(description = "Returns current signal strength for specified subscription ID.")
