@@ -38,6 +38,7 @@ import com.googlecode.android_scripting.facade.bluetooth.BluetoothHspFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothLeAdvertiseFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothLeScanFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothMapFacade;
+import com.googlecode.android_scripting.facade.bluetooth.BluetoothPanFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothRfcommFacade;
 import com.googlecode.android_scripting.facade.bluetooth.GattClientFacade;
 import com.googlecode.android_scripting.facade.bluetooth.GattServerFacade;
@@ -116,6 +117,7 @@ public class FacadeConfiguration {
         sFacadeClassList.add(BluetoothHspFacade.class);
         sFacadeClassList.add(BluetoothHidFacade.class);
         sFacadeClassList.add(BluetoothMapFacade.class);
+        sFacadeClassList.add(BluetoothPanFacade.class);
         sFacadeClassList.add(BluetoothRfcommFacade.class);
         sFacadeClassList.add(WebCamFacade.class);
         sFacadeClassList.add(WifiP2pManagerFacade.class);
