@@ -690,9 +690,10 @@ public class ConnectivityManagerFacade extends RpcReceiver {
             returns = "True if airplane mode is enabled.")
     public Boolean connectivityCheckAirplaneMode() {
         try {
-            return android.provider.Settings.System.getInt(mService.getContentResolver(),
+            return android.provider.Settings.Global.getInt(mService.getContentResolver(),
                     android.provider.Settings.Global.AIRPLANE_MODE_ON) == AIRPLANE_MODE_ON;
         } catch (SettingNotFoundException e) {
+            Log.e("Settings.Global.AIRPLANE_MODE_ON not found!");
             return false;
         }
     }
