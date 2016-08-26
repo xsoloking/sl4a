@@ -777,7 +777,8 @@ public class WifiManagerFacade extends RpcReceiver {
         if (ssid != null) {
             config.SSID = ssid.substring(1, ssid.length() - 1);
         }
-        String pwd = config.preSharedKey;                                                                      if (pwd != null) {
+        String pwd = config.preSharedKey;
+        if (pwd != null) {
             config.preSharedKey = pwd.substring(1, pwd.length() - 1);
         }
         return config;
