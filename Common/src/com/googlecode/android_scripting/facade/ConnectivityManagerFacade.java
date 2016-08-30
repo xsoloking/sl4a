@@ -291,9 +291,9 @@ public class ConnectivityManagerFacade extends RpcReceiver {
             if ((mEvents & EVENT_LINK_PROPERTIES_CHANGED) == EVENT_LINK_PROPERTIES_CHANGED) {
                 mEventFacade.postEvent(
                         ConnectivityConstants.EventNetworkCallback,
-                    new ConnectivityEvents.NetworkCallbackEventBase(
-                        mId,
-                        getNetworkCallbackEventString(EVENT_LINK_PROPERTIES_CHANGED)));
+                        new ConnectivityEvents.NetworkCallbackEventOnLinkPropertiesChanged(mId,
+                                getNetworkCallbackEventString(EVENT_LINK_PROPERTIES_CHANGED),
+                                linkProperties.getInterfaceName()));
             }
         }
 
@@ -558,6 +558,13 @@ public class ConnectivityManagerFacade extends RpcReceiver {
             throws JSONException {
         NetworkRequest.Builder builder = new NetworkRequest.Builder();
 
+        if (configJson.has("ClearCapabilities")) {
+            /* the 'ClearCapabilities' property does not have a value (that we use). Its presence
+             is used to clear the capabilities of the constructed network request (which is
+             constructed with some default capabilities already present). */
+            Log.d("build ClearCapabilities");
+            builder.clearCapabilities();
+        }
         if (configJson.has("TransportType")) {
             Log.d("build TransportType" + configJson.getInt("TransportType"));
             builder.addTransportType(configJson.getInt("TransportType"));
