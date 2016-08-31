@@ -84,11 +84,11 @@ public class BluetoothConnectionFacade extends RpcReceiver {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         mBluetoothManager = (BluetoothManager) mContext.getSystemService(
                 Service.BLUETOOTH_SERVICE);
-        mPairingHelper = new BluetoothPairingHelper();
         // Use a synchronized map to avoid racing problems
         listeningDevices = Collections.synchronizedMap(new HashMap<String, BroadcastReceiver>());
 
         mEventFacade = manager.getReceiver(EventFacade.class);
+        mPairingHelper = new BluetoothPairingHelper(mEventFacade);
         mA2dpProfile = manager.getReceiver(BluetoothA2dpFacade.class);
         mA2dpSinkProfile = manager.getReceiver(BluetoothA2dpSinkFacade.class);
         mHidProfile = manager.getReceiver(BluetoothHidFacade.class);
