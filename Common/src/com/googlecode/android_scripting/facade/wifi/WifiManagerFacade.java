@@ -526,7 +526,6 @@ public class WifiManagerFacade extends RpcReceiver {
             Log.e("Got negative network Id.");
             return false;
         }
-        mWifi.disconnect();
         mWifi.enableNetwork(nId, true);
         return mWifi.reconnect();
     }
