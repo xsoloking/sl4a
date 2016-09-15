@@ -33,6 +33,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 
 import com.googlecode.android_scripting.Log;
+import com.googlecode.android_scripting.facade.telephony.TelephonyConstants;
 import com.googlecode.android_scripting.jsonrpc.RpcReceiver;
 import com.googlecode.android_scripting.rpc.Rpc;
 import com.googlecode.android_scripting.rpc.RpcOptional;
@@ -382,6 +383,21 @@ public class ConnectivityManagerFacade extends RpcReceiver {
         return ConnectivityConstants.PacketKeepaliveCallbackInvalid;
     }
 
+    /**
+     * Callbacks used in ConnectivityManager to confirm tethering has started/failed.
+     */
+    class OnStartTetheringCallback extends ConnectivityManager.OnStartTetheringCallback {
+        @Override
+        public void onTetheringStarted() {
+            mEventFacade.postEvent(TelephonyConstants.TetheringStartedCallback, null);
+        }
+
+        @Override
+        public void onTetheringFailed() {
+            mEventFacade.postEvent(TelephonyConstants.TetheringFailedCallback, null);
+        }
+    }
+
     private final ConnectivityManager mManager;
     private final Service mService;
     private final Context mContext;
@@ -701,6 +717,20 @@ public class ConnectivityManagerFacade extends RpcReceiver {
             returns = "True if tethering is supported.")
     public boolean connectivityIsTetheringSupported() {
         return mManager.isTetheringSupported();
+    }
+
+    @Rpc(description = "Call to start tethering with a provisioning check if needed")
+    public void connectivityStartTethering(@RpcParameter(name = "type") Integer type,
+            @RpcParameter(name = "showProvisioningUi") Boolean showProvisioningUi) {
+        Log.d("startTethering for type: " + type + " showProvUi: " + showProvisioningUi);
+        OnStartTetheringCallback tetherCallback = new OnStartTetheringCallback();
+        mManager.startTethering(type, showProvisioningUi, tetherCallback);
+    }
+
+    @Rpc(description = "Call to stop tethering")
+    public void connectivityStopTethering(@RpcParameter(name = "type") Integer type) {
+        Log.d("stopTethering for type: " + type);
+        mManager.stopTethering(type);
     }
 
     @Override
