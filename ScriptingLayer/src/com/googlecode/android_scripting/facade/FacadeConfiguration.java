@@ -36,12 +36,11 @@ import com.googlecode.android_scripting.facade.bluetooth.BluetoothFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothHfpClientFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothHidFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothHspFacade;
-import com.googlecode.android_scripting.facade.bluetooth.BluetoothHfpClientFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothLeAdvertiseFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothLeScanFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothMapFacade;
-import com.googlecode.android_scripting.facade.bluetooth.BluetoothPanFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothPbapClientFacade;
+import com.googlecode.android_scripting.facade.bluetooth.BluetoothPanFacade;
 import com.googlecode.android_scripting.facade.bluetooth.BluetoothRfcommFacade;
 import com.googlecode.android_scripting.facade.bluetooth.GattClientFacade;
 import com.googlecode.android_scripting.facade.bluetooth.GattServerFacade;
@@ -145,10 +144,10 @@ public class FacadeConfiguration {
         if (sSdkLevel >= 23) {
             // add new facades here
             sFacadeClassList.add(WifiNanManagerFacade.class);
-            sFacadeClassList.add(NsdManagerFacade.class);
             sFacadeClassList.add(BluetoothHfpClientFacade.class);
             sFacadeClassList.add(BluetoothA2dpSinkFacade.class);
             sFacadeClassList.add(BluetoothPbapClientFacade.class);
+            sFacadeClassList.add(NsdManagerFacade.class);
         }
 
         for (Class<? extends RpcReceiver> recieverClass : sFacadeClassList) {
