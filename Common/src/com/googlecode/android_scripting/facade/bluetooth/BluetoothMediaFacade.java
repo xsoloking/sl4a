@@ -396,7 +396,7 @@ public class BluetoothMediaFacade extends RpcReceiver {
      */
     @Rpc(description = "Connect a MediaBrowser to the A2dpMediaBrowserservice in the Carkitt")
     public void bluetoothMediaConnectToCarMBS() {
-        ComponentName compName;
+        final ComponentName compName;
         // Create a MediaBrowser to connect to the A2dpMBS
         if (mBrowser == null) {
             compName = new ComponentName(BLUETOOTH_PKG_NAME, BROWSER_SERVICE_NAME);

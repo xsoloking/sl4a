@@ -40,6 +40,7 @@ import android.os.Messenger;
 import android.os.RemoteException;
 
 import com.android.internal.util.Protocol;
+import com.google.common.collect.Lists;
 import com.googlecode.android_scripting.Log;
 import com.googlecode.android_scripting.facade.EventFacade;
 import com.googlecode.android_scripting.facade.FacadeManager;
@@ -410,7 +411,8 @@ public class WifiP2pManagerFacade extends RpcReceiver {
             @RpcParameter(name = "serviceType") String serviceType,
             @RpcParameter(name = "txtMap") JSONObject txtMap) throws JSONException {
         Map<String, String> map = new HashMap<String, String>();
-        for (String key : txtMap.keySet()) {
+        List<String> myList = Lists.newArrayList(txtMap.keys());
+        for (String key : myList) {
             map.put(key, txtMap.getString(key));
         }
         mServiceInfo = WifiP2pDnsSdServiceInfo.newInstance(instanceName, serviceType, map);

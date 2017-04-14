@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 'android-O'
+    buildToolsVersion "26.0.0 rc1"
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+
+dependencies {
+    compile 'com.google.guava:guava:18.0'
+//    compile project(':android-common')
+    compile project(':Utils')
+//    compile "com.android.support:support-v4:25.0.0"
+}

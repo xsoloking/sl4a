@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 'android-O'
+    buildToolsVersion "26.0.0 rc1"
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            res.srcDirs = ['res']
+            jni.srcDirs = ['jni']
+//            jniLibs.srcDirs = ['jniLibs']
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion 'O'
+        targetSdkVersion 'O'
+        versionCode 26
+        versionName 'O'
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("google.keystore")
+            storePassword "android"
+            keyAlias "platform"
+            keyPassword "android"
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.guava:guava:18.0'
+    compile project(':Utils')
+    compile project(':Common')
+    compile project(':InterpreterForAndroid')
+    compile project(':ScriptingLayer')
+//    compile "com.android.support:support-v4:25.0.0"
+    compile 'com.android.support:appcompat-v7:26.+'
+    provided fileTree(dir: 'systemlibraries', include: ['*.jar'])
+}
+
+task pushDownJdkDependency {
+    def imlFile = file("ScriptingLayerForAndroid.iml")
+    println 'Change ScriptingLayerForAndroid.iml order'
+    try {
+        def parsedXml = (new XmlParser()).parse(imlFile)
+        def jdkNode = parsedXml.component[1].orderEntry.find { it.'@type' == 'jdk' }
+        parsedXml.component[1].remove(jdkNode)
+        new Node(parsedXml.component[1], 'orderEntry', ['type': 'jdk', 'jdkName': "Android API 25, O preview Platform", 'jdkType': 'Android SDK'])
+        def writer = new StringWriter()
+        new XmlNodePrinter(new PrintWriter(writer)).print(parsedXml)
+    } catch (FileNotFoundException e) {
+        println e.getMessage()
+    }
+}
+
+gradle.projectsEvaluated {
+    preBuild.dependsOn(pushDownJdkDependency)
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << '-Xbootclasspath/p:ScriptingLayerForAndroid/systemlibraries/framework.jar'
+    }
+}

@@ -594,7 +594,14 @@ public class WifiManagerFacade extends RpcReceiver {
             name = "config") JSONObject config)
             throws JSONException,CertificateException, IOException {
         PasspointConfiguration passpointConfig = genWifiPasspointConfig(config);
-        return mWifi.addOrUpdatePasspointConfiguration(passpointConfig);
+        try {
+            mWifi.addOrUpdatePasspointConfiguration(passpointConfig);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        } catch (RuntimeException e) {
+            return false;
+        }
     }
 
     /**
@@ -605,7 +612,14 @@ public class WifiManagerFacade extends RpcReceiver {
     @Rpc(description = "Remove a Passpoint configuration", returns = "true if operation succeeds; false otherwise")
     public boolean removePasspointConfig(
             @RpcParameter(name = "fqdn") String fqdn) {
-        return mWifi.removePasspointConfiguration(fqdn);
+        try {
+            mWifi.removePasspointConfiguration(fqdn);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        } catch (RuntimeException e) {
+            return false;
+        }
     }
 
     /**

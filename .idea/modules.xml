@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Common/Common.iml" filepath="$PROJECT_DIR$/Common/Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InterpreterForAndroid/InterpreterForAndroid.iml" filepath="$PROJECT_DIR$/InterpreterForAndroid/InterpreterForAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScriptingLayer/ScriptingLayer.iml" filepath="$PROJECT_DIR$/ScriptingLayer/ScriptingLayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScriptingLayerForAndroid/ScriptingLayerForAndroid.iml" filepath="$PROJECT_DIR$/ScriptingLayerForAndroid/ScriptingLayerForAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Utils/Utils.iml" filepath="$PROJECT_DIR$/Utils/Utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sl4a.iml" filepath="$PROJECT_DIR$/sl4a.iml" />
+    </modules>
+  </component>
+</project>

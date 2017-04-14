@@ -197,7 +197,7 @@ public class ScriptingLayerService extends ForegroundService {
   }
 
   @Override
-  public int onStartCommand(Intent intent, int flags, int startId) {
+  public int onStartCommand(final Intent intent, final int flags, final int startId) {
     super.onStartCommand(intent, flags, startId);
 
     //TODO: b/26538940 We need to go back to a strict policy and fix the problems

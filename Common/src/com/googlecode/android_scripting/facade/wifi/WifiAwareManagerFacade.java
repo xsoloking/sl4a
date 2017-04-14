@@ -440,7 +440,7 @@ public class WifiAwareManagerFacade extends RpcReceiver {
                             + sessionId + " is ready");
         }
         byte[] bytes = token.getBytes();
-        return session.createNetworkSpecifier(new PeerHandle(peerId), bytes);
+        return session.createNetworkSpecifierPmk(new PeerHandle(peerId), bytes);
     }
 
     private class AwareAttachCallbackPostsEvents extends AttachCallback {
